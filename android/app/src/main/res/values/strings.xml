@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">WitherHost</string>
+    <string name="title_activity_main">WitherHost - Minecraft Server Hosting</string>
+    <string name="package_name">com.armmc.app</string>
+    <string name="custom_url_scheme">com.armmc.app</string>
+</resources>

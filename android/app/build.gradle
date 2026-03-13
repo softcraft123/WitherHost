@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    namespace 'com.armmc.app'
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId 'com.armmc.app'
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName '1.0.0'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    signingConfigs {
+        release {
+            keyAlias System.getenv('KEY_ALIAS') ?: 'release'
+            keyPassword System.getenv('KEY_PASSWORD') ?: ''
+            storeFile file(System.getenv('STORE_FILE') ?: 'release.keystore')
+            storePassword System.getenv('STORE_PASSWORD') ?: ''
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:androidx.core:' + rootProject.ext.androidxCoreVersion
+    implementation 'androidx.appcompat:appcompat:' + rootProject.ext.androidxAppCompatVersion
+    implementation 'androidx.annotation:annotation:' + rootProject.ext.androidxAnnotationVersion
+    
+    implementation 'com.capacitorjs:core:5.7.4'
+    implementation 'com.capacitorjs.plugins:app:5.0.8'
+    implementation 'com.capacitorjs.plugins:keyboard:5.0.2'
+    implementation 'com.capacitorjs.plugins:statusbar:5.0.3'
+
+    implementation platform('com.google.firebase:firebase-bom:' + rootProject.ext.firebaseVersion)
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

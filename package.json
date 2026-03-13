@@ -1,0 +1,41 @@
+{
+  "name": "minecraft-hosting",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p ${PORT:-3000}",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "build:android": "next build && npx cap copy android",
+    "cap:sync": "npx cap sync android",
+    "cap:copy": "npx cap copy android"
+  },
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "firebase": "^10.7.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-dropdown-menu": "^2.0.5",
+    "@radix-ui/react-alert-dialog": "^1.0.5",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.294.0",
+    "@capacitor/core": "^5.7.0",
+    "@capacitor/android": "^5.7.0",
+    "@capacitor/app": "^5.0.0",
+    "@capacitor/status-bar": "^5.0.0",
+    "@capacitor/keyboard": "^5.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.7.0",
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17"
+  }
+}
